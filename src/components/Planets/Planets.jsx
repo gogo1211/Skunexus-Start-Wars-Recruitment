@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { replace } from 'connected-react-router';
+import { push } from 'connected-react-router';
 import './Planets.css';
 
 import Grid from '../Grid';
@@ -8,7 +8,6 @@ function Planets({ loading, items }) {
   const dispatch = useDispatch();
 
   const data = {
-    loading,
     header: [
       'name',
       'rotation_period',
@@ -24,13 +23,11 @@ function Planets({ loading, items }) {
     actions: [
       {
         label: 'Go to Detail',
-        action: (row) => dispatch(replace(`/planets/${row.id}`))
+        action: (row) => dispatch(push(`/planets/${row.id}`))
       },
       {
         label: 'Go to Films',
-        action: (row) => {
-          console.log(`redirect to grid with ${row.films.length} Films`);
-        }
+        action: (row) => dispatch(push(`/planets/${row.id}/films`))
       },
       {
         label: 'Go to Residents',
@@ -41,7 +38,7 @@ function Planets({ loading, items }) {
     ]
   };
 
-  return <Grid data={data} />;
+  return <Grid loading={loading} data={data} />;
 }
 
 export default Planets;

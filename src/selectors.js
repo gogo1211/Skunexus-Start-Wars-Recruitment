@@ -5,9 +5,19 @@ import _ from 'lodash';
 const matchSelector = createMatchSelector({ path: '/planets/:id' });
 
 export const planetsSelector = (state) => _.flatMap(state.planet.itemsByPage);
+export const filmsSelector = (state) => state.film.itemsByPlanet;
 
 export const matchPalentSelector = createSelector(
   matchSelector,
   planetsSelector,
   (match, planets) => planets.find((planet) => planet.id === match.params.id)
+);
+
+export const matchPlanetFilmsSelector = createSelector(
+  matchSelector,
+  filmsSelector,
+  (match, films) => {
+    console.log(films, match.params.id)
+    return films[match.params.id]
+  }
 );
