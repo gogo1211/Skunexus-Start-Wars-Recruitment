@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const { loading, items } = useSelector((state) => state.planet);
+  const { loading, itemsByPage } = useSelector((state) => state.planet);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function App() {
 
   const changePage = (page) => {
     setPage(page);
-    if (!items[page]) {
+    if (!itemsByPage[page]) {
       dispatch(loadPlanets(page));
     }
   };
@@ -24,13 +24,13 @@ function App() {
   return (
     <div className="App">
       <h1>Star Wars Planets</h1>
-      <Planets loading={loading} items={items[page]} />
+      <Planets loading={loading} items={itemsByPage[page]} />
       <div>
         <button onClick={() => changePage(page - 1)} disabled={page === 1}>
           Prev
         </button>
         <span>{page}</span>
-        <button onClick={() => changePage(page + 1)} disabled={!items[page]}>
+        <button onClick={() => changePage(page + 1)} disabled={!itemsByPage[page]}>
           Next
         </button>
       </div>

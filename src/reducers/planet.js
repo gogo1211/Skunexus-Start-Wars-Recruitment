@@ -2,7 +2,7 @@ import * as actionType from '../actions';
 export const planetState = {
   loading: false,
   page: 1,
-  items: {
+  itemsByPage: {
     1: []
   },
   error: ''
@@ -14,10 +14,18 @@ export default function planetReducer(state = planetState, action) {
       return { ...state, page: action.page, loading: true };
 
     case actionType.LOAD_PLANETS_SUCCESS:
-      return { ...state, loading: false, items: { ...state.items, ...action.payload } };
+      return {
+        ...state,
+        loading: false,
+        itemsByPage: { ...state.itemsByPage, ...action.payload }
+      };
 
     case actionType.ACTION_ERROR:
-      return state;
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
 
     default:
       return state;

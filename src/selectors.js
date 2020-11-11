@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 const matchSelector = createMatchSelector({ path: '/planets/:id' });
 
-export const planetsSelector = (state) => _.flatMap(state.planet.items);
+export const planetsSelector = (state) => _.flatMap(state.planet.itemsByPage);
 
 export const matchPalentSelector = createSelector(
   matchSelector,
