@@ -17,9 +17,15 @@ function Planets({ loading, items }) {
       { label: 'gravity', type: 'string' },
       { label: 'terrain', type: 'string' },
       { label: 'surface_water', type: 'number' },
-      { label: 'population', type: 'string' }
+      { label: 'population', type: 'string' },
+      { label: 'films', type: 'number' },
+      { label: 'residents', type: 'number' }
     ],
-    values: items,
+    values: items.map(({ films, residents, ...other }) => ({
+      ...other,
+      films: films.length,
+      residents: residents.length
+    })),
     actions: [
       {
         label: 'Go to Detail',
@@ -28,12 +34,12 @@ function Planets({ loading, items }) {
       },
       {
         label: 'Go to Films',
-        show: (row) => row.films.length,
+        show: (row) => row.films,
         action: (row) => dispatch(push(`/planets/${row.id}/films`))
       },
       {
         label: 'Go to Residents',
-        show: (row) => row.residents.length,
+        show: (row) => row.residents,
         action: (row) => dispatch(push(`/planets/${row.id}/residents`))
       }
     ]
