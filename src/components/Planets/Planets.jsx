@@ -23,14 +23,17 @@ function Planets({ loading, items }) {
     actions: [
       {
         label: 'Go to Detail',
+        show: () => true,
         action: (row) => dispatch(push(`/planets/${row.id}`))
       },
       {
         label: 'Go to Films',
+        show: (row) => row.films.length,
         action: (row) => dispatch(push(`/planets/${row.id}/films`))
       },
       {
         label: 'Go to Residents',
+        show: (row) => row.residents.length,
         action: (row) => dispatch(push(`/planets/${row.id}/residents`))
       }
     ]

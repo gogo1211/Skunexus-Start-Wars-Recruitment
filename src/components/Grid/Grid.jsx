@@ -24,11 +24,13 @@ function Grid({ loading, data: { header = [], values = [], actions = [] } }) {
               ))}
               {!!actions.length && (
                 <td className="gridActions">
-                  {actions.map(({ label, action }, index) => (
-                    <button key={index} onClick={() => action(row)}>
-                      {label}
-                    </button>
-                  ))}
+                  {actions
+                    .filter(({ show }) => show(row))
+                    .map(({ label, action }, index) => (
+                      <button key={index} onClick={() => action(row)}>
+                        {label}
+                      </button>
+                    ))}
                 </td>
               )}
             </tr>
