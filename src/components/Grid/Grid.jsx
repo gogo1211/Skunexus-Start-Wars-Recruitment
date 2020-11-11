@@ -12,12 +12,10 @@ function Grid({ data: { loading, header = [], values = [], actions = [] } }) {
         </tr>
       </thead>
       <tbody>
-        {loading ? (
+        {loading && (
           <tr>
             <td colSpan={header.length + (actions.length ? 1 : 0)}>Loading..</td>
           </tr>
-        ) : (
-          ''
         )}
         {values.map((row, index) => (
           <tr key={index}>
