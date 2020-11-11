@@ -5,8 +5,10 @@ function Grid({ loading, data: { header = [], values = [], actions = [] } }) {
     <table className="gridTable">
       <thead>
         <tr>
-          {header.map((colName) => (
-            <th key={colName}>{colName}</th>
+          {header.map(({ label, type }) => (
+            <th key={label} className={type === 'number' ? 'right' : 'center'}>
+              {label}
+            </th>
           ))}
           {!!actions.length && <th>Actions</th>}
         </tr>
@@ -19,8 +21,10 @@ function Grid({ loading, data: { header = [], values = [], actions = [] } }) {
         ) : (
           values.map((row, index) => (
             <tr key={index}>
-              {header.map((colName) => (
-                <td key={colName}>{row[colName]}</td>
+              {header.map(({ label, type }) => (
+                <td key={label} className={type === 'number' ? 'right' : 'center'}>
+                  {row[label]}
+                </td>
               ))}
               {!!actions.length && (
                 <td className="gridActions">

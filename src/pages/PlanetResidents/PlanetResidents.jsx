@@ -31,14 +31,14 @@ export default function PlanetResidents() {
         loading={loading}
         data={{
           header: [
-            'name',
-            'birth_year',
-            'gender',
-            'height',
-            'mass',
-            'skin_color',
-            'hair_color',
-            'eye_color'
+            { label: 'name', type: 'string' },
+            { label: 'birth_year', type: 'string' },
+            { label: 'gender', type: 'string' },
+            { label: 'height', type: 'number' },
+            { label: 'mass', type: 'number' },
+            { label: 'skin_color', type: 'string' },
+            { label: 'hair_color', type: 'string' },
+            { label: 'eye_color', type: 'string' }
           ],
           values: residents
         }}

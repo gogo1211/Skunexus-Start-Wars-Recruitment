@@ -26,7 +26,14 @@ export default function PlanetFilms() {
       <Grid
         loading={loading}
         data={{
-          header: ['title', 'director', 'producer', 'episode_id', 'release_date', 'opening_crawl'],
+          header: [
+            { label: 'title', type: 'string' },
+            { label: 'director', type: 'string' },
+            { label: 'producer', type: 'string' },
+            { label: 'episode_id', type: 'number' },
+            { label: 'release_date', type: 'string' },
+            { label: 'opening_crawl', type: 'string' }
+          ],
           values: films
         }}
       />

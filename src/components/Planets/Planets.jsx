@@ -9,15 +9,15 @@ function Planets({ loading, items }) {
 
   const data = {
     header: [
-      'name',
-      'rotation_period',
-      'orbital_period',
-      'diameter',
-      'climate',
-      'gravity',
-      'terrain',
-      'surface_water',
-      'population'
+      { label: 'name', type: 'string' },
+      { label: 'rotation_period', type: 'number' },
+      { label: 'orbital_period', type: 'number' },
+      { label: 'diameter', type: 'number' },
+      { label: 'climate', type: 'string' },
+      { label: 'gravity', type: 'string' },
+      { label: 'terrain', type: 'string' },
+      { label: 'surface_water', type: 'number' },
+      { label: 'population', type: 'string' }
     ],
     values: items,
     actions: [
