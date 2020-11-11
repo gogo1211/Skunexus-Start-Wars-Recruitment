@@ -9,6 +9,7 @@ export async function fetchPlanets(page) {
       return {
         items: response.data.results.map((item) => ({
           ...item,
+          id: item.name.split(' ').join('-').toLowerCase(),
           loaded_films: false,
           loaded_residents: false
         }))

@@ -1,8 +1,12 @@
+import { useDispatch } from 'react-redux';
+import { replace } from 'connected-react-router';
 import './Planets.css';
 
 import Grid from '../Grid';
 
 function Planets({ loading, items }) {
+  const dispatch = useDispatch();
+
   const data = {
     loading,
     header: [
@@ -18,6 +22,10 @@ function Planets({ loading, items }) {
     ],
     values: items,
     actions: [
+      {
+        label: 'Go to Detail',
+        action: (row) => dispatch(replace(`/planets/${row.id}`))
+      },
       {
         label: 'Go to Films',
         action: (row) => {
