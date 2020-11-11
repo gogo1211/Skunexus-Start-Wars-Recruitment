@@ -6,6 +6,7 @@ const matchSelector = createMatchSelector({ path: '/planets/:id' });
 
 export const planetsSelector = (state) => _.flatMap(state.planet.itemsByPage);
 export const filmsSelector = (state) => state.film.itemsByPlanet;
+export const residentsSelector = (state) => state.resident.itemsByPlanet;
 
 export const matchPalentSelector = createSelector(
   matchSelector,
@@ -16,8 +17,11 @@ export const matchPalentSelector = createSelector(
 export const matchPlanetFilmsSelector = createSelector(
   matchSelector,
   filmsSelector,
-  (match, films) => {
-    console.log(films, match.params.id)
-    return films[match.params.id]
-  }
+  (match, films) => films[match.params.id]
+);
+
+export const matchPlanetResidentsSelector = createSelector(
+  matchSelector,
+  residentsSelector,
+  (match, films) => films[match.params.id]
 );

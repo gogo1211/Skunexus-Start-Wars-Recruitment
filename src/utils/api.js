@@ -23,10 +23,11 @@ export async function fetchObjByUrl(url) {
 }
 
 export async function fetchFilmsForPlanet(planet) {
-  try {
-    const response = await Promise.all(planet.films.map((film) => fetchObjByUrl(film)));
-    return response;
-  } catch (error) {
-    return error;
-  }
+  const response = await Promise.all(planet.films.map((film) => fetchObjByUrl(film)));
+  return response;
+}
+
+export async function fetchResidentsForPlanet(planet) {
+  const response = await Promise.all(planet.residents.map((film) => fetchObjByUrl(film)));
+  return response;
 }

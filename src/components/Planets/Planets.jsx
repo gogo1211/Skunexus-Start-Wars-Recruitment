@@ -31,9 +31,7 @@ function Planets({ loading, items }) {
       },
       {
         label: 'Go to Residents',
-        action: (row) => {
-          console.log(`redirect to grid with ${row.residents.length} Residents`);
-        }
+        action: (row) => dispatch(push(`/planets/${row.id}/residents`))
       }
     ]
   };
