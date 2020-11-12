@@ -53,7 +53,30 @@ function App() {
           Add New Planet
         </button>
       </div>
-      <Planets loading={loading} items={itemsByPage[page]} />
+      <Planets
+        loading={loading}
+        items={
+          itemsByPage[page] &&
+          itemsByPage[page].map(({ films, residents, ...other }) => ({
+            ...other,
+            films: films.length,
+            residents: residents.length
+          }))
+        }
+        fields={[
+          { label: 'name', type: 'string' },
+          { label: 'rotation_period', type: 'number' },
+          { label: 'orbital_period', type: 'number' },
+          { label: 'diameter', type: 'number' },
+          { label: 'climate', type: 'string' },
+          { label: 'gravity', type: 'string' },
+          { label: 'terrain', type: 'string' },
+          { label: 'surface_water', type: 'number' },
+          { label: 'population', type: 'string' },
+          { label: 'films', type: 'number' },
+          { label: 'residents', type: 'number' }
+        ]}
+      />
       <nav
         className="pagination is-centered is-rounded p-4"
         role="navigation"

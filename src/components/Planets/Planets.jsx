@@ -5,30 +5,12 @@ import PropTypes from 'prop-types';
 import Grid from '../Grid';
 import './Planets.css';
 
-function Planets({ loading, items }) {
+function Planets({ loading, items, fields }) {
   const dispatch = useDispatch();
 
   const data = {
-    header: [
-      { label: 'name', type: 'string' },
-      { label: 'rotation_period', type: 'number' },
-      { label: 'orbital_period', type: 'number' },
-      { label: 'diameter', type: 'number' },
-      { label: 'climate', type: 'string' },
-      { label: 'gravity', type: 'string' },
-      { label: 'terrain', type: 'string' },
-      { label: 'surface_water', type: 'number' },
-      { label: 'population', type: 'string' },
-      { label: 'films', type: 'number' },
-      { label: 'residents', type: 'number' }
-    ],
-    values:
-      items &&
-      items.map(({ films, residents, ...other }) => ({
-        ...other,
-        films: films.length,
-        residents: residents.length
-      })),
+    header: fields,
+    values: items,
     actions: [
       {
         label: 'Go to Detail',
@@ -53,7 +35,24 @@ function Planets({ loading, items }) {
 
 Planets.propTypes = {
   loading: PropTypes.bool,
-  items: PropTypes.array
+  items: PropTypes.array,
+  fields: PropTypes.array
+};
+
+Planets.defaultProps = {
+  loading: false,
+  items: [],
+  fields: [
+    { label: 'name', type: 'string' },
+    { label: 'rotation_period', type: 'number' },
+    { label: 'orbital_period', type: 'number' },
+    { label: 'diameter', type: 'number' },
+    { label: 'climate', type: 'string' },
+    { label: 'gravity', type: 'string' },
+    { label: 'terrain', type: 'string' },
+    { label: 'surface_water', type: 'number' },
+    { label: 'population', type: 'string' }
+  ]
 };
 
 export default Planets;
