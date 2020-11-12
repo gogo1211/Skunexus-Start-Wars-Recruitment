@@ -21,7 +21,7 @@ function Planets({ loading, items }) {
       { label: 'films', type: 'number' },
       { label: 'residents', type: 'number' }
     ],
-    values: items.map(({ films, residents, ...other }) => ({
+    values: items && items.map(({ films, residents, ...other }) => ({
       ...other,
       films: films.length,
       residents: residents.length

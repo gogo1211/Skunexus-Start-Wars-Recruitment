@@ -1,6 +1,6 @@
-export const LOAD_RESIDENTS_FOR_PLANET = 'films/loadResidentsForPlanet';
-export const LOAD_RESIDENTS_FOR_PLANET_SUCCESS = 'films/loadResidentsForPlanetSuccess';
-export const LOAD_RESIDENTS_FOR_PLANET_ERROR = 'films/loadResidentsForPlanetError';
+export const LOAD_RESIDENTS_FOR_PLANET = 'residents/loadResidentsForPlanet';
+export const LOAD_RESIDENTS_FOR_PLANET_SUCCESS = 'residents/loadResidentsForPlanetSuccess';
+export const LOAD_RESIDENTS_FOR_PLANET_ERROR = 'residents/loadResidentsForPlanetError';
 
 export function loadResidentsForPlanet(planet) {
   return {

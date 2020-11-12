@@ -10,7 +10,7 @@ export default function PlanetResidents() {
   const dispatch = useDispatch();
   const planet = useSelector(matchPalentSelector);
   const residents = useSelector(matchPlanetResidentsSelector);
-  const { loading } = useSelector((state) => state.film.loading);
+  const loading = useSelector((state) => state.resident.loading);
 
   useEffect(() => {
     if (planet) {
@@ -25,8 +25,8 @@ export default function PlanetResidents() {
   }
 
   return (
-    <div className="App">
-      <h1>Residents of {planet.name}</h1>
+    <>
+      <h1 className="title">Residents of {planet.name}</h1>
       <Grid
         loading={loading}
         data={{
@@ -43,6 +43,6 @@ export default function PlanetResidents() {
           values: residents
         }}
       />
-    </div>
+    </>
   );
 }

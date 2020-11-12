@@ -11,17 +11,17 @@ export const residentsSelector = (state) => state.resident.itemsByPlanet;
 export const matchPalentSelector = createSelector(
   matchSelector,
   planetsSelector,
-  (match, planets) => planets.find((planet) => planet.id === match.params.id)
+  (match, planets) => planets.find((planet) => match && planet.id === match.params.id)
 );
 
 export const matchPlanetFilmsSelector = createSelector(
   matchSelector,
   filmsSelector,
-  (match, films) => films[match.params.id]
+  (match, films) => match && films[match.params.id]
 );
 
 export const matchPlanetResidentsSelector = createSelector(
   matchSelector,
   residentsSelector,
-  (match, films) => films[match.params.id]
+  (match, films) => match && films[match.params.id]
 );

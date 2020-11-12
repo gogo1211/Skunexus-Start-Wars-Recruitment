@@ -23,17 +23,27 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Star Wars Planets</h1>
+      <h1 className="title">Star Wars Planets</h1>
       <Planets loading={loading} items={itemsByPage[page]} />
-      <div>
-        <button onClick={() => changePage(page - 1)} disabled={page === 1}>
+      <nav className="pagination is-centered is-rounded p-4" role="navigation" aria-label="pagination">
+        <button
+          className="pagination-previous"
+          onClick={() => changePage(page - 1)}
+          disabled={page === 1}
+        >
           Prev
         </button>
-        <span>{page}</span>
-        <button onClick={() => changePage(page + 1)} disabled={!itemsByPage[page]}>
+        <ul className="pagination-list">
+          <li className="pagination-link is-current">{page}</li>
+        </ul>
+        <button
+          className="pagination-next"
+          onClick={() => changePage(page + 1)}
+          disabled={!itemsByPage[page]}
+        >
           Next
         </button>
-      </div>
+      </nav>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function PlanetFilms() {
   const dispatch = useDispatch();
   const planet = useSelector(matchPalentSelector);
   const films = useSelector(matchPlanetFilmsSelector);
-  const { loading } = useSelector((state) => state.film.loading);
+  const loading = useSelector((state) => state.film.loading);
 
   useEffect(() => {
     if (planet) {
@@ -18,11 +18,17 @@ export default function PlanetFilms() {
     } else {
       dispatch(replace('/'));
     }
-  }, [dispatch]);
+  }, []);
+
+  if (!planet) {
+    return <>Sorry</>;
+  }
+
+  console.log(loading)
 
   return (
-    <div>
-      <h1>Films of {planet.name}</h1>
+    <>
+      <h1 className="title">Films of {planet.name}</h1>
       <Grid
         loading={loading}
         data={{
@@ -37,6 +43,6 @@ export default function PlanetFilms() {
           values: films
         }}
       />
-    </div>
+    </>
   );
 }

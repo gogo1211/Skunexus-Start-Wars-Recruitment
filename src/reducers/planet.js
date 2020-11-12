@@ -20,7 +20,7 @@ export default function planetReducer(state = planetState, action) {
         itemsByPage: { ...state.itemsByPage, ...action.payload }
       };
 
-    case actionType.ACTION_ERROR:
+    case actionType.LOAD_PLANETS_ERROR:
       return {
         ...state,
         loading: false,
