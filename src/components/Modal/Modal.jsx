@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function Modal({ title, children, open, onClose }) {
   return (
     <div className={`modal${open ? ' is-active' : ''}`}>
@@ -12,3 +14,14 @@ export default function Modal({ title, children, open, onClose }) {
     </div>
   );
 }
+
+Modal.propTypes = {
+  title: PropTypes.string,
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node
+};
+
+Modal.defaultProps = {
+  title: ''
+};

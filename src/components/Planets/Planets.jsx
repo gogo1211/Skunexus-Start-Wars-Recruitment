@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
-import './Planets.css';
+import PropTypes from 'prop-types';
 
 import Grid from '../Grid';
+import './Planets.css';
 
 function Planets({ loading, items }) {
   const dispatch = useDispatch();
@@ -21,11 +22,13 @@ function Planets({ loading, items }) {
       { label: 'films', type: 'number' },
       { label: 'residents', type: 'number' }
     ],
-    values: items && items.map(({ films, residents, ...other }) => ({
-      ...other,
-      films: films.length,
-      residents: residents.length
-    })),
+    values:
+      items &&
+      items.map(({ films, residents, ...other }) => ({
+        ...other,
+        films: films.length,
+        residents: residents.length
+      })),
     actions: [
       {
         label: 'Go to Detail',
@@ -47,5 +50,10 @@ function Planets({ loading, items }) {
 
   return <Grid loading={loading} data={data} />;
 }
+
+Planets.propTypes = {
+  loading: PropTypes.bool,
+  items: PropTypes.array
+};
 
 export default Planets;

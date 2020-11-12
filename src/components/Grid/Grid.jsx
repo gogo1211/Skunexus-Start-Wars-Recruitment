@@ -1,4 +1,5 @@
 import Loader from '../Loader';
+import PropTypes from 'prop-types';
 import './Grid.css';
 
 function Grid({ loading, data: { header = [], values = [], actions = [] } }) {
@@ -61,5 +62,14 @@ function Grid({ loading, data: { header = [], values = [], actions = [] } }) {
     </table>
   );
 }
+
+Grid.propTypes = {
+  loading: PropTypes.bool,
+  data: PropTypes.shape({
+    header: PropTypes.array.isRequired,
+    values: PropTypes.array,
+    actions: PropTypes.array
+  })
+};
 
 export default Grid;

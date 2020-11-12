@@ -15,8 +15,8 @@ export default function PlanetDetail() {
 
   return (
     <div className="container is-max-desktop">
-      <div class="card">
-        <div class="card-content">
+      <div className="card">
+        <div className="card-content">
           <div className="title">{planet.name}</div>
           <div className="information-container">
             <div className="name">Rotation Period</div>
@@ -41,7 +41,7 @@ export default function PlanetDetail() {
             <div className="value">{planet.residents.length}</div>
           </div>
         </div>
-        <footer class="card-footer">
+        <footer className="card-footer">
           <a className="card-footer-item" onClick={() => dispatch(replace(`/`))}>
             Go to list
           </a>

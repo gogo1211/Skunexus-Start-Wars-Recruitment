@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 
 function InputField({ label, isValid, ...props }) {
   return (
@@ -18,6 +19,11 @@ function InputField({ label, isValid, ...props }) {
     </div>
   );
 }
+
+InputField.propTypes = {
+  label: PropTypes.string,
+  isValid: PropTypes.bool
+};
 
 function SelectField({ label, items, isValid, ...props }) {
   return (
@@ -45,6 +51,16 @@ function SelectField({ label, items, isValid, ...props }) {
     </div>
   );
 }
+
+SelectField.propTypes = {
+  label: PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: PropTypes.string
+    })
+  )
+};
 
 export default function PlanetForm({ planet: init, onSubmit, onCancel }) {
   const initValidation = {
@@ -162,3 +178,16 @@ export default function PlanetForm({ planet: init, onSubmit, onCancel }) {
     </fieldset>
   );
 }
+
+PlanetForm.propTypes = {
+  planet: PropTypes.shape({
+    name: PropTypes.string,
+    rotation_period: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+    orbital_period: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+    diameter: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+    climate: PropTypes.string,
+    gravity: PropTypes.string,
+    terrain: PropTypes.string,
+    surface_water: PropTypes.oneOf([PropTypes.string, PropTypes.number])
+  })
+};
