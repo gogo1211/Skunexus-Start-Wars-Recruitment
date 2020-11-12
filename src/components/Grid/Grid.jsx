@@ -19,7 +19,7 @@ function Grid({ loading, data: { header = [], values = [], actions = [] } }) {
         ))}
         {!!actions.length && (
           <td className="gridActions">
-            <div className="field is-grouped is-grouped-multiline is-justify-content-center">
+            <div className="field is-grouped is-grouped-multiline">
               {actions
                 .filter(({ show }) => show(row))
                 .map(({ label, action }, index) => (
