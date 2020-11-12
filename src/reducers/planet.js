@@ -11,7 +11,7 @@ export const planetState = {
 export default function planetReducer(state = planetState, action) {
   switch (action.type) {
     case actionType.LOAD_PLANETS:
-      return { ...state, page: action.page, loading: true };
+      return { ...state, loading: true };
 
     case actionType.LOAD_PLANETS_SUCCESS:
       return {
@@ -25,6 +25,12 @@ export default function planetReducer(state = planetState, action) {
         ...state,
         loading: false,
         error: action.error
+      };
+
+    case actionType.SET_PAGE:
+      return {
+        ...state,
+        page: action.page
       };
 
     default:

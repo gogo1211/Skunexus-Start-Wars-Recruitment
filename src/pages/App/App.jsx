@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loadPlanets } from '../../actions';
+import { loadPlanets, setPage } from '../../actions';
 import Planets from '../../components/Planets';
 import Modal from '../../components/Modal';
 import PlanetForm from '../../components/PlanetForm';
@@ -9,8 +9,7 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const { loading, itemsByPage } = useSelector((state) => state.planet);
-  const [page, setPage] = useState(1);
+  const { loading, itemsByPage, page } = useSelector((state) => state.planet);
   const [selectedPlanet, setSelectedPlanet] = useState({});
   const [openModal, setOpenModal] = useState(false);
   const [confirmModal, setConfirmModal] = useState('');
@@ -20,7 +19,7 @@ function App() {
   }, [dispatch]);
 
   const changePage = (page) => {
-    setPage(page);
+    dispatch(setPage(page));
     if (!itemsByPage[page]) {
       dispatch(loadPlanets(page));
     }
