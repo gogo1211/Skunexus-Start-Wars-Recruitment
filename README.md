@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Skunexus Star Wars Recruitment Test Application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+React
+React-router
+Redux
+Redux-saga
+Bulma CSS framework
 
 ## Available Scripts
 
