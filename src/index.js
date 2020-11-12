@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import 'bulma/css/bulma.css'
 
 import Routes from './pages/routes';
 import configureStore from './store';
